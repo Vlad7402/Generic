@@ -38,7 +38,7 @@ namespace Generic
                 last = item;
         }
 
-        public T PopLast()
+        public T GetLast()
         {
             T lastValue = this.Last;
             if (first == last)
@@ -51,7 +51,7 @@ namespace Generic
             return lastValue;
         }
 
-        public T DeqeueFirst()
+        public T GetFirst()
         {
             T firstValue = this.First;
             if (first == last)
@@ -87,11 +87,11 @@ namespace Generic
         }
 
         public bool IsEmpty { get { return last == null; } }
-    }
 
-    class ListEl<T>
-    {
-        public ListEl<T> Next, Previous;
-        public T Value;
+        private class ListEl<T>
+        {
+            public ListEl<T> Next, Previous;
+            public T Value;
+        }
     }
 }
