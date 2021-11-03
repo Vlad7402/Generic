@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Generic
 {
-    public class List1<T>
+    public class Dack<T>
     {
-        private ListEl<T> last, first;
+        private DackEl<T> last, first;
 
         public void PushLast(T value)
         {
-            ListEl<T> item = new();
+            DackEl<T> item = new();
             item.Value = value;
             if (last != null)
             {
@@ -26,7 +26,7 @@ namespace Generic
 
         public void EnqueueFirst(T value)
         {
-            ListEl<T> item = new();
+            DackEl<T> item = new();
             item.Value = value;
             if (first != null)
             {
@@ -88,9 +88,9 @@ namespace Generic
 
         public bool IsEmpty { get { return last == null; } }
 
-        private class ListEl<T>
+        private class DackEl<T>
         {
-            public ListEl<T> Next, Previous;
+            public DackEl<T> Next, Previous;
             public T Value;
         }
     }
