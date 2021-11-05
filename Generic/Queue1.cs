@@ -13,12 +13,16 @@ namespace Generic
         public void Enqueue(T value)
         { dack.PushLast(value); }
 
-        public T Dequeue()
-        { return dack.GetFirst(); }
+        public void Dequeue()
+        { T _ = dack.GetFirst(); }
 
         public bool IsEmpty() 
         { return dack.IsEmpty; }
 
+        public T ViewFirstItem()
+        { return dack.First; }
 
+        public void Print()
+        { Console.WriteLine(dack.GetFirst()); }
     }
 }
