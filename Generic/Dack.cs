@@ -12,8 +12,7 @@ namespace Generic
 
         public void PushLast(T value)
         {
-            DackEl<T> item = new();
-            item.Value = value;
+            DackEl<T> item = new(value);
             if (last != null)
             {
                 item.Previous = last;
@@ -26,8 +25,8 @@ namespace Generic
 
         public void EnqueueFirst(T value)
         {
-            DackEl<T> item = new();
-            item.Value = value;
+
+            DackEl<T> item = new(value);
             if (first != null)
             {
                 item.Next = first;
@@ -88,10 +87,17 @@ namespace Generic
 
         public bool IsEmpty { get { return last == null; } }
 
-        private class DackEl<T>
+        public class DackEl<T>
         {
+            public  T Value;
             public DackEl<T> Next, Previous;
-            public T Value;
+
+            public DackEl(T value)
+            {
+                Value = value;
+            }
+
+            
         }
     }
 }
