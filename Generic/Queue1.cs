@@ -13,8 +13,8 @@ namespace Generic
         public void Enqueue(T value)
         { dack.PushLast(value); }
 
-        public void Dequeue()
-        { T _ = dack.GetFirst(); }
+        public T Dequeue()
+        { return dack.GetFirst(); }
 
         public bool IsEmpty() 
         { return dack.IsEmpty; }

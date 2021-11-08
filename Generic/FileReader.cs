@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Generic
 {
-    public class FileReader
+    public static class FileReader
     {
-        public Queue1<object> ReadFile()
+        public static Queue1<object> ReadFile()
         {
             var line = File.ReadAllLines("input.txt");
             if (!CheckFile(line)) throw new Exception("the file is not filled correctly");
             return ParseLine(line);
         }
         
-        private bool CheckFile(string[] line)
+        private static bool CheckFile(string[] line)
         { return line.Length == 2 && (line[0].ToLower() == "stack" || line[0].ToLower() == "queue"); }
 
-        private Queue1<object> ParseLine(string[] line)
+        private static Queue1<object> ParseLine(string[] line)
         {
             var queue = new Queue1<object>();
             queue.Enqueue(line[0]);
