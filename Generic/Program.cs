@@ -28,7 +28,7 @@ namespace Generic
             
         }
 
-        static void StackProgram(Queue1<object> commandsQueue)
+        static void QueueProgram(Queue1<object> commandsQueue)
         {
             Queue1<object> queue1 = new();
             //1 - вставка, 2 - удаление, 3 – просмотр начала очереди, 4 – проверка на пустоту, 5 - печать
@@ -54,45 +54,49 @@ namespace Generic
                         Console.WriteLine($"Очередь пустая = {queue1.IsEmpty()}");
                         break;
                     case 5:
-                        //ДОДЕЛАТЬ
+                        queue1.Print();
                         break;
                 }
 
             }
         }
-        static void QueueProgram(Queue1<object> commandsQueue)
+        static void StackProgram(Queue1<object> commandsQueue)
         {
             Stack1<object> stack1 = new();
-            object inputData = null;
-            var command = RecognizeCommand(commandsQueue.Dequeue(), out inputData);
-            switch (command)
+
+            while (!commandsQueue.IsEmpty())
             {
-                case null:
-                    throw new Exception("проблемы с вводом");
-                case 1:
-                    stack1.Push(inputData);
-                    Console.WriteLine($"добавляем в очередь {inputData}");
-                    break;
-                case 2:
-                    Console.WriteLine($"убираем из очереди 1й элемент {stack1.Pop()}");
-                    break;
-                case 3:
-                    Console.WriteLine($"Первый элемент = {stack1.Top}");
-                    break;
-                case 4:
-                    Console.WriteLine($"Очередь пустая = {stack1.IsEmpty}");
-                    break;
-                case 5:
-                    //ДОДЕЛАТЬ
-                    break;
+                object inputData = null;
+                var command = RecognizeCommand(commandsQueue.Dequeue(), out inputData);
+                switch (command)
+                {
+                    case null:
+                        throw new Exception("проблемы с вводом");
+                    case 1:
+                        stack1.Push(inputData);
+                        Console.WriteLine($"добавляем в стек {inputData}");
+                        break;
+                    case 2:
+                        Console.WriteLine($"достаем из стека верхний элемент {stack1.Pop()}");
+                        break;
+                    case 3:
+                        Console.WriteLine($"Верхний элемент = {stack1.Top}");
+                        break;
+                    case 4:
+                        Console.WriteLine($"Очередь пустая = {stack1.IsEmpty}");
+                        break;
+                    case 5:
+                        stack1.Print();
+                        break;
+                }
             }
         }
         static int? RecognizeCommand(object command, out object data)
         {
             data = null;
-            if (command.ToString().Length == 1 && ((int)command) <= 5 && ((int)command) >= 1)
+            if (command.ToString().Length == 1 && int.Parse(command.ToString()) <= 5 && int.Parse(command.ToString()) >= 1)
             {
-                return (int)command;
+                return int.Parse(command.ToString());
             }
             else if (command.ToString().Length == 3)
             {
