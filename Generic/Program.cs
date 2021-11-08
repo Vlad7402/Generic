@@ -7,7 +7,7 @@ namespace Generic
         
         static void Main(string[] args)
         {
-
+            ExecuteProgramInFile();
         }
 
         static void ExecuteProgramInFile()
