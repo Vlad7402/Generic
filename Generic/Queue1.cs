@@ -23,6 +23,6 @@ namespace Generic
         { return dack.First; }
 
         public void Print()
-        { Console.WriteLine(dack.GetFirst()); }
+        { dack.PrintFromFirst(); }
     }
 }

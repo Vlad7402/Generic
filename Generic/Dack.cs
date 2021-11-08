@@ -87,17 +87,42 @@ namespace Generic
 
         public bool IsEmpty { get { return last == null; } }
 
+        public void PrintFromFirst()
+        {
+            if (first != null)
+                Console.Write(first.Value);
+
+            else throw new Exception("Generic type is empty");
+
+            var nextEl = first.Next;
+            while (nextEl != null)
+            {
+                Console.Write(nextEl.Value);
+                nextEl = nextEl.Next;
+            }
+        }
+
+        public void PrintFromEnd()
+        {
+            if (last != null)
+                Console.Write(last.Value);
+            else throw new Exception("Generic type is empty");
+
+            var previousEl = last.Previous;
+            while (previousEl != null)
+            {
+                Console.Write(previousEl.Value);
+                previousEl = previousEl.Previous;
+            }
+        }
+
         public class DackEl<T>
         {
             public  T Value;
             public DackEl<T> Next, Previous;
 
             public DackEl(T value)
-            {
-                Value = value;
-            }
-
-            
+            { Value = value; }
         }
     }
 }
