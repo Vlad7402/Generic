@@ -7,9 +7,123 @@ namespace Generic
         
         static void Main(string[] args)
         {
-            ExecuteProgramInFile();
+            //ExecuteProgramInFile();
+            CompleteFunctions();
         }
 
+        static void CompleteFunctions()
+        {
+            Functions<int> functions = new();
+            Dack<int> workDack = CreateWorkDack(10);
+            {
+                Console.Write(" 1. ");
+                workDack.PrintFromFirst();
+                functions.ReverseList(workDack);
+                Console.Write(" <-было - стало -> ");
+                workDack.PrintFromFirst();
+            }
+            {
+                Console.Write("\n 2. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.FirstToEnd(workDack);
+                workDack.PrintFromFirst();
+            }
+            var _ = workDack.GetFirst();
+            workDack.PushLast(workDack.First);
+            {
+                Console.Write("\n 3. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                int countDifEl = functions.CountDifferentElements(workDack);
+                workDack.PrintFromFirst();
+                Console.Write($" разных элементов {countDifEl}");
+            }
+            {
+                Console.Write("\n 4. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.RemoveRepeats(workDack);
+                workDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(10);
+            {
+                Console.Write("\n 5. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.AddDackInDackAfterX(workDack, 5);
+                workDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(8);
+            workDack.PushLast(9);
+            {
+                Console.Write("\n 6. ");
+                workDack.PrintFromFirst();
+                Console.Write("  <-было - стало -> ");
+                functions.InsertItemIntoOrderedList(workDack, 9);
+                workDack.PrintFromFirst();
+            }
+            {
+                Console.Write("\n 7. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.RemoveCustomElement(workDack, 9);
+                workDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(10);
+            {
+                Console.Write("\n 8. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.InsertItemBeforeX(workDack, 5, 6);
+                workDack.PrintFromFirst();
+            }
+            {
+                Console.Write("\n 9. ");
+                Console.Write("\t       <-было - стало -> ");
+                workDack = functions.JoinLists();
+                workDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(10);
+            {
+                Console.Write("\n10. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                Dack<int> secondDack = new();
+                workDack = functions.SplitList(workDack, ref secondDack, 5);
+                workDack.PrintFromFirst();
+                Console.Write(" | " );
+                secondDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(10);
+            {
+                Console.Write("\n11. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.DoubleList(workDack);
+                workDack.PrintFromFirst();
+            }
+            workDack = CreateWorkDack(10);
+            {
+                Console.Write("\n12. ");
+                workDack.PrintFromFirst();
+                Console.Write(" <-было - стало -> ");
+                functions.ReplacementOfElements(workDack, 4, 7);
+                workDack.PrintFromFirst();
+            }
+        }
+
+        private static Dack<int> CreateWorkDack(int count)
+        {
+            Dack<int> workDack = new();
+            for (int i = 0; i < count; i++)
+            {
+                workDack.PushLast(i);
+            }
+            return workDack;
+        }
+
+        #region FileWorker
         static void ExecuteProgramInFile()
         {
             Queue1<object> commandsQueue = FileReader.ReadFile();
@@ -106,5 +220,6 @@ namespace Generic
             else 
                 return null;
         }
+        #endregion
     }
 }

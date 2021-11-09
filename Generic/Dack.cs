@@ -116,13 +116,6 @@ namespace Generic
             }
         }
 
-        public class DackEl<T>
-        {
-            public  T Value;
-            public DackEl<T> Next, Previous;
-
-            public DackEl(T value)
-            { Value = value; }
-        }
+       
     }
 }
