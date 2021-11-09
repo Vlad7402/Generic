@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Generic
 {
@@ -7,9 +7,18 @@ namespace Generic
         
         static void Main(string[] args)
         {
-            ExecuteProgramInFile();
         }
-
+        static void ShowRPN()
+        {
+            RPN rpn = new();
+            var infix = FileReader.ReadFileRPN();
+            var postfix = rpn.GetExpression(infix);
+            var resulr = rpn.Counting(postfix, 0);
+            Console.Clear();
+            Console.Write("Инфиксная запись: " + infix);
+            Console.Write("Постфиксная запись: " + postfix);
+            Console.Write("Результат: " + resulr);
+        }       
         static void ExecuteProgramInFile()
         {
             Queue1<object> commandsQueue = FileReader.ReadFile();
