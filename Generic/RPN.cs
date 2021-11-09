@@ -11,7 +11,7 @@ namespace Generic
         public string GetExpression(string input)
         {
             string result = "  ";
-            Stack<string> operations = new Stack<string>();
+            Stack1<string> operations = new Stack1<string>();
             int prefixisStart = 0;
             int prefixSkip = 0;
             int prefixisEnd = 0;
@@ -85,13 +85,13 @@ namespace Generic
                     }
                 }
             }
-            while (operations.Count > 0)
+            while (!operations.IsEmpty)
                 result += operations.Pop() + " ";
             return result;
         }
         public double Counting(string input, double velOfX)
         {
-            Stack<double> nums = new Stack<double>();
+            Stack1<double> nums = new Stack1<double>();
             for (int i = 0; i < input.Length; i++)
             {
                 if (char.IsWhiteSpace(input[i])) continue;
@@ -140,7 +140,7 @@ namespace Generic
                     }
                 }
             }
-            return nums.Peek();
+            return nums.Top;
         }
         private int GetPriority(string operation)
         {
@@ -211,10 +211,10 @@ namespace Generic
                 return true;
             return false;
         }
-        private void AddOperation(Stack<string> operations, ref string result, string operation)
+        private void AddOperation(Stack1<string> operations, ref string result, string operation)
         {
-            if (operations.Count > 0)
-                if (GetPriority(operation) <= GetPriority(operations.Peek()))
+            if (!operations.IsEmpty)
+                if (GetPriority(operation) <= GetPriority(operations.Top))
                     result += operations.Pop().ToString() + " ";
             operations.Push(operation);
         }
