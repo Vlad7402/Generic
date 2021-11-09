@@ -7,6 +7,7 @@ namespace Generic
         
         static void Main(string[] args)
         {
+            MassageReverse();
         }
         static void ShowRPN()
         {
@@ -18,7 +19,53 @@ namespace Generic
             Console.Write("Инфиксная запись: " + infix);
             Console.Write("Постфиксная запись: " + postfix);
             Console.Write("Результат: " + resulr);
-        }       
+        }
+        static void MassageReverse()
+        {
+            Console.Clear();
+            Console.Write("Введите выше сообщение:");
+            var massage = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Исходный текст: " + massage);
+            var words = massage.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            Stack1<string> wordsStack = new();
+            foreach (var word in words)
+                wordsStack.Push(word);
+
+            var tempString = string.Empty;
+            while (!wordsStack.IsEmpty)
+            {
+                tempString += wordsStack.Pop();
+                tempString += " ";
+            }
+            Console.WriteLine("Обратный порядок слов: " + tempString);
+            Stack1<char> symbolsStack = new();
+            foreach (var word in words)
+                wordsStack.Push(word);
+
+            tempString = string.Empty;
+            while (!wordsStack.IsEmpty)
+            {
+                var word = wordsStack.Pop();
+                foreach (var letter in word)
+                    symbolsStack.Push(letter);
+
+                while (!symbolsStack.IsEmpty)
+                    tempString += symbolsStack.Pop();
+                
+                tempString += " ";
+            }
+            //Console.WriteLine("Обратный порядок букв в словах: " + tempString);
+            foreach (var symbol in massage)
+                symbolsStack.Push(symbol);
+
+            tempString = string.Empty;
+            while (!symbolsStack.IsEmpty)
+                tempString += symbolsStack.Pop();
+
+            Console.WriteLine("Обратный порядок букв и слов: " + tempString);
+            Console.ReadKey();
+        }
         static void ExecuteProgramInFile()
         {
             Queue1<object> commandsQueue = FileReader.ReadFile();

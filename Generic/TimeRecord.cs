@@ -10,7 +10,7 @@ namespace Generic
 {
     public class TimeRecord
     {
-        public static void Main()
+        public static void MainTimer()
         {
             int smoothnes = 20;
             int RunTimes = 2500;
