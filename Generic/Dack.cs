@@ -69,7 +69,6 @@ namespace Generic
             {
                 if (!IsEmpty)
                     return first.Value;
-
                 throw new Exception("Generic type is empty");
             } 
         }
