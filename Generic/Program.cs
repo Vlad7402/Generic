@@ -7,7 +7,9 @@ namespace Generic
         
         static void Main(string[] args)
         {
-            MassageReverse();
+            //MessageReverse();
+            //ExecuteProgramInFile();
+            TaskManager.StartWork();
         }
         static void ShowRPN()
         {
@@ -20,7 +22,7 @@ namespace Generic
             Console.Write("Постфиксная запись: " + postfix);
             Console.Write("Результат: " + resulr);
         }
-        static void MassageReverse()
+        static void MessageReverse()
         {
             Console.Clear();
             Console.Write("Введите выше сообщение:");
@@ -66,6 +68,7 @@ namespace Generic
             Console.WriteLine("Обратный порядок букв и слов: " + tempString);
             Console.ReadKey();
         }
+
         static void ExecuteProgramInFile()
         {
             Queue1<object> commandsQueue = FileReader.ReadFile();
@@ -83,7 +86,6 @@ namespace Generic
             }
             
         }
-
         static void QueueProgram(Queue1<object> commandsQueue)
         {
             Queue1<object> queue1 = new();
