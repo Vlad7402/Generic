@@ -9,7 +9,7 @@ namespace Generic
         {
             //MessageReverse();
             //ExecuteProgramInFile();
-            TaskManager.StartWork();
+            //TaskManager.StartWork();
         }
         static void ShowRPN()
         {
@@ -71,6 +71,7 @@ namespace Generic
 
         static void ExecuteProgramInFile()
         {
+            // здесь можно добавить в очередь элементычтоб на замере можно было только удалять
             Queue1<object> commandsQueue = FileReader.ReadFile();
             string dynamic = commandsQueue.Dequeue().ToString();
             switch (dynamic)
@@ -88,6 +89,7 @@ namespace Generic
         }
         static void QueueProgram(Queue1<object> commandsQueue)
         {
+            //начало замера
             Queue1<object> queue1 = new();
             //1 - вставка, 2 - удаление, 3 – просмотр начала очереди, 4 – проверка на пустоту, 5 - печать
             while (!commandsQueue.IsEmpty())
@@ -117,6 +119,7 @@ namespace Generic
                 }
 
             }
+            // конец замера
         }
         static void StackProgram(Queue1<object> commandsQueue)
         {
