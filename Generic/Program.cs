@@ -10,6 +10,7 @@ namespace Generic
             //MessageReverse();
             //ExecuteProgramInFile();
             //TaskManager.StartWork();
+            CompleteFunctions();
         }
 
         static void CompleteFunctions()
