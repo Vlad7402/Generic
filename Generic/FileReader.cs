@@ -15,10 +15,7 @@ namespace Generic
             if (!CheckFile(line)) throw new Exception("the file is not filled correctly");
             return ParseLine(line);
         }
-        public static string ReadFileRPN()
-        {
-            return File.ReadAllText("inputRPN.txt");
-        }
+
 
         private static bool CheckFile(string[] line)
         { return line.Length == 2 && (line[0].ToLower() == "stack" || line[0].ToLower() == "queue"); }
@@ -34,6 +31,9 @@ namespace Generic
             }
             return queue;
         }
+
+        public static string ReadFileRPN()
+        { return File.ReadAllText("inputRPN.txt"); }
 
     }
 }
